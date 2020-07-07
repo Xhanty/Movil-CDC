@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "371496431012",
+    "firebase_url": "https://software-cdc.firebaseio.com",
+    "project_id": "software-cdc",
+    "storage_bucket": "software-cdc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371496431012:android:68f28f6941ec8a90fea531",
+        "android_client_info": {
+          "package_name": "com.admin.cdc.movil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371496431012-iomqg9lfdpnl4rsrk5kjus94fd0gpau1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.admin.cdc.movil",
+            "certificate_hash": "62795efa5ed77d4228f2f0d7fc4faf216ee04342"
+          }
+        },
+        {
+          "client_id": "371496431012-k4grltuf5q8e6ca811t1jmpldf7sm4sb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwUvgFKMv4qtC4cqQMx1-ohcE3QfIT5rY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371496431012-k4grltuf5q8e6ca811t1jmpldf7sm4sb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
