@@ -1,7 +1,6 @@
 package com.admin.cdc.movil;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 /**

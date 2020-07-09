@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Móvil-CDC</string>
+
+    <!--Pantalla 0-->
+    <string name="permission_title">Concedenos los accesos requeridos</string>
+    <string name="permission_detail">Dar acceso a la app de CDC a los archivos y a tú ubicación</string>
+    <string name="continue_and_learn">Continuar para seguir leyendo</string>
+
+    <!--Pantalla 1-->
+    <string name="result_awesome">Empieza ya!</string>
+    <string name="thank_you">Gracias por elegirnos</string>
+    <string name="after_updating">Empieza administrar todos los procesos de la empresa</string>
 </resources>
