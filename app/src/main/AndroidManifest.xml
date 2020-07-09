@@ -21,16 +21,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
-        <activity android:name=".LoginActivity"
+        <activity android:name=".ClaveActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity
+            android:name=".LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".InfoIndexActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InfoIndexActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
