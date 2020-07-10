@@ -10,4 +10,8 @@
     <string name="result_awesome">Empieza ya!</string>
     <string name="thank_you">Gracias por elegirnos</string>
     <string name="after_updating">Empieza administrar todos los procesos de la empresa</string>
+
+    <!--Menú-->
+    <string name="navigation_drawer_open">Abrir menú</string>
+    <string name="navigation_drawer_close">Cerrar menú</string>
 </resources>

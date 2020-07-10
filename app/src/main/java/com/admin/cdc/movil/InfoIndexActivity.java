@@ -44,7 +44,7 @@ public class InfoIndexActivity extends TutorialActivity {
         boolean isInserted = myDB.insertData(1);
 
         if(isInserted == true){
-            Toast.makeText(this, "Tutorial finalizado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Finalizado correctamente", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();

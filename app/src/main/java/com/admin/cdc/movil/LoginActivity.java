@@ -1,9 +1,11 @@
 package com.admin.cdc.movil;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //Login en Firebase
     FirebaseAuth mAuth;
 
+    boolean cerrar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +141,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         Toast.makeText(LoginActivity.this, "Sesión iniciada correctamente", Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                         startActivity(new Intent(LoginActivity.this, MenuActivity.class));
+                        finish();
 
                     } else {
                         Toast.makeText(LoginActivity.this, "Correo y/o contraseña incorrecta", Toast.LENGTH_SHORT).show();
@@ -157,6 +161,41 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(mAuth.getCurrentUser() != null){
             startActivity(new Intent(LoginActivity.this, MenuActivity.class));
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Alerta");
+        builder.setMessage("¿Estás seguro de salir de la aplicación?");
+
+        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                cerrar = true;
+                salirApp(cerrar);
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                cerrar = false;
+                salirApp(cerrar);
+            }
+        });
+
+        builder.create();
+        builder.show();
+    }
+
+    public void salirApp(boolean cerrar){
+        if(cerrar == true){
+            Toast.makeText(this, "Regresa pronto!", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }

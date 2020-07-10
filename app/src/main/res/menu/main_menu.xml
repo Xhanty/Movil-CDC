@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Flora">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:icon="@drawable/admin_icon"
+                    android:title="Administrar" />
+
+                <item
+                    android:icon="@drawable/inventario_icon"
+                    android:title="Inventario" />
+
+                <item
+                    android:icon="@drawable/reporte_icon"
+                    android:title="Reportes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Fauna">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:icon="@drawable/admin_icon"
+                    android:title="Administrar" />
+
+                <item
+                    android:icon="@drawable/inventario_icon"
+                    android:title="Inventario" />
+
+                <item
+                    android:icon="@drawable/reporte_icon"
+                    android:title="Reportes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Suelo">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:icon="@drawable/admin_icon"
+                    android:title="Administrar" />
+
+                <item
+                    android:icon="@drawable/inventario_icon"
+                    android:title="Inventario" />
+
+                <item
+                    android:icon="@drawable/reporte_icon"
+                    android:title="Reportes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Aire">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:icon="@drawable/admin_icon"
+                    android:title="Administrar" />
+
+                <item
+                    android:icon="@drawable/inventario_icon"
+                    android:title="Inventario" />
+
+                <item
+                    android:icon="@drawable/reporte_icon"
+                    android:title="Reportes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Forestales">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:icon="@drawable/admin_icon"
+                    android:title="Administrar" />
+
+                <item
+                    android:icon="@drawable/inventario_icon"
+                    android:title="Inventario" />
+
+                <item
+                    android:icon="@drawable/reporte_icon"
+                    android:title="Reportes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Social">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:icon="@drawable/admin_icon"
+                    android:title="Administrar" />
+
+                <item
+                    android:icon="@drawable/inventario_icon"
+                    android:title="Inventario" />
+
+                <item
+                    android:icon="@drawable/reporte_icon"
+                    android:title="Reportes" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Perfil">
+
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/profile_icon"
+                    android:title="Cuenta" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Cerrar sesión" />
+            </group>
+        </menu>
+    </item>
+</menu>
