@@ -12,6 +12,7 @@
                     android:title="Administrar" />
 
                 <item
+                    android:id="@+id/inventatio_flora"
                     android:icon="@drawable/inventario_icon"
                     android:title="Inventario" />
 
