@@ -16,7 +16,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.admin.cdc.movil.Aire.ListaAireFragment;
+import com.admin.cdc.movil.Fauna.ListaFaunaFragment;
 import com.admin.cdc.movil.Flora.ListaFloraFragment;
+import com.admin.cdc.movil.Forestales.ListaForesFragment;
+import com.admin.cdc.movil.Social.ListaSocialFragment;
+import com.admin.cdc.movil.Suelo.ListaSueloFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -90,7 +95,8 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
 
-            case R.id.inventatio_flora:
+            //OPCIONES INVENTARIOS INVENTARIOS
+            case R.id.inventario_flora:
                 Fragment newFragment = new ListaFloraFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.contenedormenu, newFragment);
@@ -98,6 +104,48 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
                 transaction.commit();
                 break;
 
+            case R.id.inventario_fauna:
+                Fragment newFragment1 = new ListaFaunaFragment();
+                FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
+                transaction1.replace(R.id.contenedormenu, newFragment1);
+                transaction1.addToBackStack(null);
+                transaction1.commit();
+                break;
+
+            case R.id.inventario_suelo:
+                Fragment newFragment2 = new ListaSueloFragment();
+                FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                transaction2.replace(R.id.contenedormenu, newFragment2);
+                transaction2.addToBackStack(null);
+                transaction2.commit();
+                break;
+
+            case R.id.inventario_aire:
+                Fragment newFragment3 = new ListaAireFragment();
+                FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+                transaction3.replace(R.id.contenedormenu, newFragment3);
+                transaction3.addToBackStack(null);
+                transaction3.commit();
+                break;
+
+            case R.id.inventario_forestales:
+                Fragment newFragment4 = new ListaForesFragment();
+                FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
+                transaction4.replace(R.id.contenedormenu, newFragment4);
+                transaction4.addToBackStack(null);
+                transaction4.commit();
+                break;
+
+            case R.id.inventario_social:
+                Fragment newFragment5 = new ListaSocialFragment();
+                FragmentTransaction transaction5 = getSupportFragmentManager().beginTransaction();
+                transaction5.replace(R.id.contenedormenu, newFragment5);
+                transaction5.addToBackStack(null);
+                transaction5.commit();
+                break;
+
+
+            //CERRAR SESÓN
             case R.id.nav_logout:
                 AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
 

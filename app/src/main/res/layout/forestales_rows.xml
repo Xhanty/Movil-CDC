@@ -5,12 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="120dp"
-    android:layout_height="190dp"
+    android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="#fff"
     cardview:cardCornerRadius="4dp"
-    android:clickable="true"
-    android:id="@+id/cardview_flora_id">
+    android:clickable="true">
 
     <LinearLayout
         android:orientation="vertical"
@@ -18,14 +17,13 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/flora_img_id"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
+            android:id="@+id/forestales_img_id"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:scaleType="centerCrop"
-            android:background="#fff"/>
+            android:scaleType="centerCrop"/>
 
         <View
             android:layout_width="match_parent"
@@ -33,14 +31,28 @@
             android:background="#000" />
 
         <TextView
-            android:id="@+id/floa_title_id"
+            android:id="@+id/forestales_title_id"
+            android:textColor="#439A3E"
+            android:textSize="13sp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:fontFamily="@font/aclonica"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nombre"/>
+
+        <TextView
+            android:id="@+id/forestales_id"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
             android:textColor="#2d2d2d"
             android:textSize="13sp"
             android:fontFamily="@font/aclonica"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Identificador"/>
+            android:text="ID"/>
 
     </LinearLayout>
 
