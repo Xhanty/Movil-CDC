@@ -1,5 +1,6 @@
 package com.admin.cdc.movil.Forestales;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -8,14 +9,17 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -35,10 +39,11 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class ListaForesFragment extends Fragment {
+public class ListaForesFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView mRutasList;
     private DatabaseReference mDatabase;
@@ -47,9 +52,10 @@ public class ListaForesFragment extends Fragment {
     FirebaseRecyclerAdapter<Forestales, ForestalesViewHolder> adapter;
     ImageButton buscar;
     Spinner spinnerBusqueda;
+    private String codigo;
+    EditText txt_codigo;
 
     ArrayList<String> arrayList = new ArrayList<>();
-    List<CharSequence> opcionesespecie = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,125 +68,14 @@ public class ListaForesFragment extends Fragment {
 
         spinnerBusqueda = view.findViewById(R.id.select_flora);
         buscar = view.findViewById(R.id.filtro_fores);
-        llenarspinner();
+        spinnerBusqueda.setVisibility(View.GONE);
 
         mRutasList = (RecyclerView) view.findViewById(R.id.recy_forestales);
         mRutasList.setHasFixedSize(true);
         mRutasList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        buscar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-                builder.setTitle("Selecciona una opción");
-                builder.setIcon(R.drawable.ic_buscar);
-
-                final CharSequence[] opciones = new CharSequence[3];
-                opciones[0] = "Buscar por código";
-                opciones[1] = "Buscar por especie";
-                opciones[2] = "Buscar por familia";
-
-                builder.setItems(opciones, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (opciones[which] == opciones[0]){
-                            //CÓDIGO
-                            busqueda(0);
-
-                        } else if (opciones[which] == opciones[1]){
-                            //ESPECIE
-                            busqueda(1);
-
-                        } else {
-                            //FAMILIA
-                            busqueda(2);
-                        }
-                    }
-                });
-
-                builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
+        buscar.setOnClickListener(this);
         return view;
-    }
-
-    private void busqueda(final int opcion){
-        if (opcion == 0){
-
-        } else if (opcion == 1){
-            final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-            final CharSequence[] charSequenceArray = opcionesespecie.toArray(new CharSequence[opcionesespecie.size()]);
-            builder.setTitle("Selecciona una especie");
-            builder.setIcon(R.drawable.ic_buscar);
-
-            mDatabase.child("Especies").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot item: dataSnapshot.getChildren()) {
-                        for (CharSequence op: charSequenceArray) {
-                            Toast.makeText(getContext(), op, Toast.LENGTH_LONG).show();
-                        }
-                    }
-
-                    builder.setItems(charSequenceArray, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getContext(), "Hola", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
-
-        } else {
-
-        }
-    }
-
-    private void llenarspinner() {
-        mDatabase.child("Especies").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                arrayList.clear();
-                opcionesespecie.clear();
-                for (DataSnapshot item: dataSnapshot.getChildren()) {
-                    arrayList.add(item.child("Nombre").getValue(String.class));
-                    opcionesespecie.add(item.child("Nombre").getValue(String.class));
-                }
-
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.adapter_spinner, arrayList);
-                spinnerBusqueda.setAdapter(arrayAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
 
     @Override
@@ -205,6 +100,126 @@ public class ListaForesFragment extends Fragment {
 
             //DESCARGAR BASE DE DATOS PARA UTILIZARLA SIN INTERNET
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v == buscar){
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+            builder.setTitle("Selecciona una opción");
+            builder.setIcon(R.drawable.ic_buscar);
+
+            final CharSequence[] opciones = new CharSequence[3];
+            opciones[0] = "Buscar por código";
+            opciones[1] = "Buscar por especie";
+            opciones[2] = "Buscar por familia";
+
+            builder.setItems(opciones, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (opciones[which] == opciones[0]){
+                        //CÓDIGO
+                        busqueda(0);
+
+                    } else if (opciones[which] == opciones[1]){
+                        //ESPECIE
+                        busqueda(1);
+
+                    } else {
+                        //FAMILIA
+                        busqueda(2);
+                    }
+                }
+            });
+
+            builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+    }
+
+    private void busqueda(final int opcion){
+        if (opcion == 0){
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            View view = inflater.inflate(R.layout.adapter_dialog, null);
+            builder.setView(view)
+                    .setTitle("Buscar por código")
+                    .setIcon(R.drawable.ic_buscar)
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .setPositiveButton("Buscar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            codigo = txt_codigo.getText().toString();
+                            Toast.makeText(getContext(), "Código ingresado: " + codigo, Toast.LENGTH_SHORT).show();
+                            spinnerBusqueda.setVisibility(View.GONE);
+                        }
+                    });
+            txt_codigo = view.findViewById(R.id.txt_codigo);
+            builder.show();
+
+        } else if (opcion == 1){
+            llenarspinnerespecie();
+
+        } else {
+            llenarspinnerfamilia();
+        }
+    }
+
+    private void llenarspinnerespecie() {
+        mDatabase.child("Especies").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayList.clear();
+                for (DataSnapshot item: dataSnapshot.getChildren()) {
+                    arrayList.add(item.child("Nombre").getValue(String.class));
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.adapter_spinner, arrayList);
+                spinnerBusqueda.setAdapter(arrayAdapter);
+                spinnerBusqueda.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void llenarspinnerfamilia() {
+        mDatabase.child("Familias").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                arrayList.clear();
+
+                for (DataSnapshot item: dataSnapshot.getChildren()) {
+                    arrayList.add(item.child("Nombre").getValue(String.class));
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getContext(), R.layout.adapter_spinner, arrayList);
+                spinnerBusqueda.setAdapter(arrayAdapter);
+                spinnerBusqueda.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void listForestales() {
