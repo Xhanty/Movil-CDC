@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -225,14 +227,16 @@ public class ListaForesFragment extends Fragment implements View.OnClickListener
     public void listForestales() {
 
         options = new FirebaseRecyclerOptions.Builder<Forestales>().setQuery(mDatabase.child("Inventario"), Forestales.class).build();
+
         adapter = new FirebaseRecyclerAdapter<Forestales, ForestalesViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(ForestalesViewHolder forestalesViewHolder, final int i, Forestales forestales) {
-                forestalesViewHolder.setNombre(forestales.getNombre_Regional());
-                forestalesViewHolder.setIdentificador(forestales.getNumero_Campo());
-                forestalesViewHolder.setImage(getContext(), forestales.getImagen());
-                progressDialog.dismiss();
+            protected void onBindViewHolder(final ForestalesViewHolder forestalesViewHolder, final int i, final Forestales forestales) {
 
+                forestalesViewHolder.setNombre(String.valueOf(forestales.getNombre_Regional()));
+                forestalesViewHolder.setIdentificador(String.valueOf(forestales.getNumero_Campo()));
+                forestalesViewHolder.setImage(getContext(), String.valueOf(forestales.getImagen()));
+
+                progressDialog.dismiss();
 
                 forestalesViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -253,6 +257,7 @@ public class ListaForesFragment extends Fragment implements View.OnClickListener
 
         };
         adapter.startListening();
+        mRutasList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRutasList.setAdapter(adapter);
     }
 

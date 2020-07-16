@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:foreground="?android:attr/selectableItemBackground"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview_id_forestales"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="120dp"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:background="#fff"
-    cardview:cardCornerRadius="4dp"
-    android:clickable="true">
+    cardview:cardCornerRadius="4dp">
 
     <LinearLayout
         android:orientation="vertical"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,7 +22,6 @@
             android:id="@+id/forestales_img_id"
             android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
-            android:layout_marginTop="1dp"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:scaleType="centerCrop"/>
@@ -37,7 +38,7 @@
             android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
             android:fontFamily="@font/aclonica"
-            android:gravity="center"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Nombre"/>
@@ -49,11 +50,10 @@
             android:textColor="#2d2d2d"
             android:textSize="13sp"
             android:fontFamily="@font/aclonica"
-            android:gravity="center"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="ID"/>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

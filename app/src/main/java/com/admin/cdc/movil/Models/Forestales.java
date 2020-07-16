@@ -7,60 +7,27 @@ public class Forestales {
     String Nombre_Regional;
     String Especie;
     String Familia;
-    String CAP_1; String CAP_2; String CAP_3; String CAP_4; String CAP_5;
-    String Altura_Total;
-    String Altura_Comercial;
     String Imagen;
+    Long CAP_1, CAP_2, CAP_3, CAP_4, CAP_5;
+    Long Altura_Total, Altura_Comercial;
 
 
     //FORMULARIO DETALLADO
-    String Coor_X; String Coor_Y;
-    String CAP;
-    String DAP;
-    String Area_Basa;
-    String Volumen_To;
-    String Volumen_Co;
     String PS;
     String RN;
     String Clase_Diam;
+    Long Coor_X, Coor_Y;
+    Long CAP, DAP;
+    Long Area_Basa, Volumen_To, Volumen_Co;
 
     public Forestales(){
 
     }
 
-    public Forestales(String numero_Campo, String nombre_Regional, String especie, String familia,
-                      String CAP_1, String CAP_2, String CAP_3, String CAP_4, String CAP_5,
-                      String altura_Total, String altura_Comercial, String imagen, String coor_X,
-                      String coor_Y, String CAP, String DAP, String area_Basa, String volumen_To,
-                      String volumen_Co, String PS, String RN, String clase_Diam) {
-
-        Numero_Campo = numero_Campo;
-        Nombre_Regional = nombre_Regional;
-        Especie = especie;
-        Familia = familia;
-        this.CAP_1 = CAP_1;
-        this.CAP_2 = CAP_2;
-        this.CAP_3 = CAP_3;
-        this.CAP_4 = CAP_4;
-        this.CAP_5 = CAP_5;
-        Altura_Total = altura_Total;
-        Altura_Comercial = altura_Comercial;
-        Imagen = imagen;
-        Coor_X = coor_X;
-        Coor_Y = coor_Y;
-        this.CAP = CAP;
-        this.DAP = DAP;
-        Area_Basa = area_Basa;
-        Volumen_To = volumen_To;
-        Volumen_Co = volumen_Co;
-        this.PS = PS;
-        this.RN = RN;
-        Clase_Diam = clase_Diam;
-    }
-
     public String getNumero_Campo() {
         return Numero_Campo;
     }
+
 
     public void setNumero_Campo(String numero_Campo) {
         Numero_Campo = numero_Campo;
@@ -90,62 +57,6 @@ public class Forestales {
         Familia = familia;
     }
 
-    public String getCAP_1() {
-        return CAP_1;
-    }
-
-    public void setCAP_1(String CAP_1) {
-        this.CAP_1 = CAP_1;
-    }
-
-    public String getCAP_2() {
-        return CAP_2;
-    }
-
-    public void setCAP_2(String CAP_2) {
-        this.CAP_2 = CAP_2;
-    }
-
-    public String getCAP_3() {
-        return CAP_3;
-    }
-
-    public void setCAP_3(String CAP_3) {
-        this.CAP_3 = CAP_3;
-    }
-
-    public String getCAP_4() {
-        return CAP_4;
-    }
-
-    public void setCAP_4(String CAP_4) {
-        this.CAP_4 = CAP_4;
-    }
-
-    public String getCAP_5() {
-        return CAP_5;
-    }
-
-    public void setCAP_5(String CAP_5) {
-        this.CAP_5 = CAP_5;
-    }
-
-    public String getAltura_Total() {
-        return Altura_Total;
-    }
-
-    public void setAltura_Total(String altura_Total) {
-        Altura_Total = altura_Total;
-    }
-
-    public String getAltura_Comercial() {
-        return Altura_Comercial;
-    }
-
-    public void setAltura_Comercial(String altura_Comercial) {
-        Altura_Comercial = altura_Comercial;
-    }
-
     public String getImagen() {
         return Imagen;
     }
@@ -154,61 +65,64 @@ public class Forestales {
         Imagen = imagen;
     }
 
-    public String getCoor_X() {
-        return Coor_X;
+    public Long getCAP_1() {
+        return CAP_1;
     }
 
-    public void setCoor_X(String coor_X) {
-        Coor_X = coor_X;
+    public void setCAP_1(Long CAP_1) {
+        this.CAP_1 = CAP_1;
     }
 
-    public String getCoor_Y() {
-        return Coor_Y;
+    public Long getCAP_2() {
+        return CAP_2;
     }
 
-    public void setCoor_Y(String coor_Y) {
-        Coor_Y = coor_Y;
+    public void setCAP_2(Long CAP_2) {
+        this.CAP_2 = CAP_2;
     }
 
-    public String getCAP() {
-        return CAP;
+    public Long getCAP_3() {
+        return CAP_3;
     }
 
-    public void setCAP(String CAP) {
-        this.CAP = CAP;
+    public void setCAP_3(Long CAP_3) {
+        this.CAP_3 = CAP_3;
     }
 
-    public String getDAP() {
-        return DAP;
+    public Long getCAP_4() {
+        return CAP_4;
     }
 
-    public void setDAP(String DAP) {
-        this.DAP = DAP;
+    public void setCAP_4(Long CAP_4) {
+        this.CAP_4 = CAP_4;
     }
 
-    public String getArea_Basa() {
-        return Area_Basa;
+    public Long getCAP_5() {
+        return CAP_5;
     }
 
-    public void setArea_Basa(String area_Basa) {
-        Area_Basa = area_Basa;
+    public void setCAP_5(Long CAP_5) {
+        this.CAP_5 = CAP_5;
     }
 
-    public String getVolumen_To() {
-        return Volumen_To;
+    /*
+    public Long getAltura_Total() {
+        return Altura_Total;
     }
 
-    public void setVolumen_To(String volumen_To) {
-        Volumen_To = volumen_To;
+    public void setAltura_Total(Long altura_Total) {
+        Altura_Total = altura_Total;
     }
 
-    public String getVolumen_Co() {
-        return Volumen_Co;
+    public Long getAltura_Comercial() {
+        return Altura_Comercial;
     }
 
-    public void setVolumen_Co(String volumen_Co) {
-        Volumen_Co = volumen_Co;
+    public void setAltura_Comercial(Long altura_Comercial) {
+        Altura_Comercial = altura_Comercial;
     }
+
+     */
 
     public String getPS() {
         return PS;
@@ -233,4 +147,62 @@ public class Forestales {
     public void setClase_Diam(String clase_Diam) {
         Clase_Diam = clase_Diam;
     }
+
+    /*
+    public Long getCoor_X() {
+        return Coor_X;
+    }
+
+    public void setCoor_X(Long coor_X) {
+        Coor_X = coor_X;
+    }
+
+    public Long getCoor_Y() {
+        return Coor_Y;
+    }
+
+    public void setCoor_Y(Long coor_Y) {
+        Coor_Y = coor_Y;
+    }
+
+    public Long getCAP() {
+        return CAP;
+    }
+
+    public void setCAP(Long CAP) {
+        this.CAP = CAP;
+    }
+
+    public Long getDAP() {
+        return DAP;
+    }
+
+    public void setDAP(Long DAP) {
+        this.DAP = DAP;
+    }
+
+    public Long getArea_Basa() {
+        return Area_Basa;
+    }
+
+    public void setArea_Basa(Long area_Basa) {
+        Area_Basa = area_Basa;
+    }
+
+    public Long getVolumen_To() {
+        return Volumen_To;
+    }
+
+    public void setVolumen_To(Long volumen_To) {
+        Volumen_To = volumen_To;
+    }
+
+    public Long getVolumen_Co() {
+        return Volumen_Co;
+    }
+
+    public void setVolumen_Co(Long volumen_Co) {
+        Volumen_Co = volumen_Co;
+    }
+     */
 }
