@@ -230,7 +230,7 @@ public class ListaForesFragment extends Fragment implements View.OnClickListener
 
         adapter = new FirebaseRecyclerAdapter<Forestales, ForestalesViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(final ForestalesViewHolder forestalesViewHolder, final int i, final Forestales forestales) {
+            protected void onBindViewHolder(ForestalesViewHolder forestalesViewHolder, final int i, Forestales forestales) {
 
                 forestalesViewHolder.setNombre(String.valueOf(forestales.getNombre_Regional()));
                 forestalesViewHolder.setIdentificador(String.valueOf(forestales.getNumero_Campo()));
@@ -241,9 +241,9 @@ public class ListaForesFragment extends Fragment implements View.OnClickListener
                 forestalesViewHolder.mView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        /*Intent intent = new Intent(getContext(), DetallesRutaActivity.class);
+                        Intent intent = new Intent(getContext(), DetalleFloraActivity.class);
                         intent.putExtra("ID", getRef(i).getKey());
-                        startActivity(intent);*/
+                        startActivity(intent);
                     }
                 });
             }
