@@ -21,6 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 public class DetalleFloraActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DatabaseReference mDatabase;
@@ -39,11 +43,20 @@ public class DetalleFloraActivity extends AppCompatActivity implements View.OnCl
     FloatingActionsMenu grupoBotones;
     FloatingActionButton fabEditar, fabDetalles, fabPdf;
 
+    private String[]headerFlora = {"#", "Nombre", "Familia", "Especie", "Altura_Total", "Altura_Comercial"};
+    private FloraPDF floraPDF;
+
+
+    private Date fecha = new Date();
+    ArrayList<String[]> flora = new ArrayList<>();
+    SimpleDateFormat formatFecha = new SimpleDateFormat("dd/MM/YYYY");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_flora);
 
+        floraPDF = new FloraPDF(this);
         ID = getIntent().getStringExtra("ID");
         IDCC = Integer.parseInt(ID);
 

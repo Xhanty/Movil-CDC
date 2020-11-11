@@ -246,6 +246,35 @@ public class ListaForesFragment extends Fragment implements View.OnClickListener
                         startActivity(intent);
                     }
                 });
+
+                forestalesViewHolder.mView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                        builder.setTitle("Alerta");
+                        builder.setMessage("¿Deseas eliminar este árbol de la aplicación?");
+
+                        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mDatabase.child("Inventario").child(getRef(i).getKey()).setValue(null);
+                                Toast.makeText(getContext(), "Eliminado correctamente", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        builder.create();
+                        builder.show();
+                        return false;
+                    }
+                });
             }
 
             @NonNull
